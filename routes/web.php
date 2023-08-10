@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DraftController;
+use App\Models\Draft;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $drafts = Draft::where('is_published', true)->paginate(10);
+    return view('welcome', ['drafts' => $drafts]);
 })->name('index');
 
 Route::middleware([
@@ -25,4 +28,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('draft', DraftController::class)->except([
+        'create', 'store', 'edit', 'update', 'destroy'
+    ]);
 });

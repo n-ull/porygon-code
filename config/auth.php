@@ -71,6 +71,23 @@ return [
         // ],
     ],
 
+    'permissions' => [
+        'table' => 'permissions',
+    ],
+
+    'roles' => [
+        'table' => 'roles',
+    ],
+
+    'role_has_permissions' => [
+        'table' => 'role_has_permissions',
+    ],
+
+    'role_user' => [
+        'table' => 'model_has_roles',
+        'model' => App\Models\User::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

@@ -14,7 +14,7 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
+/*
         Permission::create(['name' => 'create drafts']);
         Permission::create(['name' => 'publish drafts']);
         Permission::create(['name' => 'unpublish drafts']);

@@ -16,7 +16,7 @@
                         {{ __('Home') }}
                     </x-nav-link>
                     @auth
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('draft.index') }}" :active="request()->routeIs('draft.index')">
                         {{ __('My Drafts') }}
                     </x-nav-link>
                     @endauth

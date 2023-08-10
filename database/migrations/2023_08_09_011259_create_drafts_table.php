@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('content');
+            $table->text('content');
             $table->boolean('is_published')->default(false);
             $table->json('tags')->nullable();
             $table->json('images')->nullable();
