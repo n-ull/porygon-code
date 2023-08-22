@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden hover:bg-gray-50 transition">
+<div class="flex flex-col bg-white dark:bg-gray-800 shadow-lg rounded-md overflow-hidden hover:bg-gray-50 transition">
     @if ($draft->is_published && request()->routeIs('draft.index'))
         <div class="relative">
             <div class="absolute w-full px-4 py-2 text-green-800 bg-green-400 text-xs opacity-90">Published</div>
@@ -6,7 +6,7 @@
     @endif
 
     <a href="{{ route('draft.show', ['draft' => $draft]) }}">
-        <img src="https://i.imgur.com/or9YGZx.png" class="w-full h-50 object-cover flex-shrink-0" />
+        <img src="https://i.imgur.com/or9YGZx.png" class="w-full h-50 object-cover rounded-t-md" />
     </a>
 
     <div class="flex flex-col p-4 flex-grow">
@@ -24,11 +24,11 @@
 
     <div class="flex items-end justify-between p-4 mt-auto">
         <div class="flex gap-1 cursor-pointer">
-            <x-heroicon-o-chat-bubble-oval-left-ellipsis class="h-6 w-6" />
+            <x-heroicon-o-chat-bubble-oval-left-ellipsis />
             <p>0</p>
         </div>
         <div>
-            <x-heroicon-s-share class="h-6 w-6" />
+            <x-heroicon-s-share />
         </div>
     </div>
 </div>

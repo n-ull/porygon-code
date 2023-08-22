@@ -15,11 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->text('content');
             $table->boolean('is_published')->default(false);
             $table->json('tags')->nullable();
             $table->json('images')->nullable();
-            $table->timestamps();
 
             if (Schema::hasTable('users')) {
                 // The "users" table exists...
@@ -30,6 +28,8 @@ return new class extends Migration
                 // The "categories" table exists...
                 $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             }
+
+            $table->timestamps();
         });
     }
 

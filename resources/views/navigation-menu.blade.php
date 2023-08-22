@@ -16,10 +16,13 @@
                         {{ __('Home') }}
                     </x-nav-link>
                     @auth
-                    <x-nav-link href="{{ route('draft.index') }}" :active="request()->routeIs('draft.index')">
-                        {{ __('My Drafts') }}
-                    </x-nav-link>
+                        <x-nav-link href="{{ route('draft.index') }}" :active="request()->routeIs('draft.index')">
+                            {{ __('My Drafts') }}
+                        </x-nav-link>
                     @endauth
+                    <x-nav-link href="#" :active="request()->routeIs('dashboard')">
+                        {{ __('Devlogs') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -84,8 +87,10 @@
                         </x-dropdown>
                     @endauth
                     @guest
-                        <x-dropdown-link class="border text-primary border-primary active:bg-primary active:text-white hover:bg-primary hover:text-white rounded-3xl" href="{{ route('login') }}">
-                        {{ __('Log in') }}
+                        <x-dropdown-link
+                            class="border text-primary border-primary active:bg-primary active:text-white hover:bg-primary hover:text-white rounded-3xl"
+                            href="{{ route('login') }}">
+                            {{ __('Log in') }}
                         </x-dropdown-link>
                     @endguest
                 </div>
@@ -114,10 +119,15 @@
                 {{ __('Home') }}
             </x-responsive-nav-link>
             @auth
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('My Drafts') }}
-            </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('My Drafts') }}
+                </x-responsive-nav-link>
             @endauth
+
+            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                {{ __('Devlogs') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

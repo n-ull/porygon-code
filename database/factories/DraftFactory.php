@@ -22,7 +22,6 @@ class DraftFactory extends Factory
             'user_id' => User::all()->random()->id,
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(3),
-            'content' => $this->faker->paragraph(10),
             'category_id' => Category::all()->random()->id,
         ];
     }

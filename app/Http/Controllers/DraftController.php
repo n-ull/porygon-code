@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Draft;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
 class DraftController extends Controller
@@ -13,7 +14,7 @@ class DraftController extends Controller
     public function index()
     {
         $drafts = Draft::where('user_id', auth()->id())->paginate(10);
-        return view('drafts.index', compact('drafts'));
+        return view('draft.index', compact('drafts'));
     }
 
     /**
@@ -21,7 +22,7 @@ class DraftController extends Controller
      */
     public function create()
     {
-        //
+        return view('draft.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class DraftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //pass all $request to the back page
+        return back()->with('success', $request->all());
     }
 
     /**
@@ -37,7 +39,7 @@ class DraftController extends Controller
      */
     public function show(Draft $draft)
     {
-        return view('drafts.show', compact('draft'));
+        return view('draft.show', compact('draft'));
     }
 
     /**

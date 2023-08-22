@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DraftController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Draft;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/', function () {
     return view('welcome', ['drafts' => $drafts]);
 })->name('index');
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -29,7 +31,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('draft', DraftController::class)->except([
-        'create', 'store', 'edit', 'update', 'destroy'
-    ]);
+    Route::resource('draft', DraftController::class)->except(['show']);
 });
+
+
+Route::get('/draft/{draft}', [DraftController::class, 'show'])->name('draft.show');
+Route::get('/user/{user}', [ProfileController::class, 'show'])->name('public-profile.show');
