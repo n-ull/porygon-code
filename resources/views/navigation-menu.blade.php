@@ -119,7 +119,7 @@
                 {{ __('Home') }}
             </x-responsive-nav-link>
             @auth
-                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-responsive-nav-link href="{{ route('draft.index') }}" :active="request()->routeIs('draft.index')">
                     {{ __('My Drafts') }}
                 </x-responsive-nav-link>
             @endauth

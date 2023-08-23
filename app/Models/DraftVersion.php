@@ -11,6 +11,24 @@ class DraftVersion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'content',
+        'draft_id'
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($version) {
+            if ($version->draft_id !== $version->draft->id) {
+                return false; // Cancelar la operación si el borrador no coincide
+            }
+        });
+    }
+
+
     public function draft(): BelongsTo
     {
         return $this->belongsTo(Draft::class);

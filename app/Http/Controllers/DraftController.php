@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Draft;
+use App\Models\DraftVersion;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,35 @@ class DraftController extends Controller
      */
     public function store(Request $request)
     {
+
+        //validate the request
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'description' => 'required|min:3|max:255',
+            'v_title' => 'required|min:3|max:255',
+            'v_content' => 'required|min:10',
+        ]);
+
+        //create a new draft
+        $draft = Draft::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->category,
+            'user_id' => auth()->id(),
+        ]);
+
+        // create first version of the draft
+        $draftVersion = DraftVersion::create([
+            'title' => $request->v_title,
+            'content' => $request->v_content,
+            'draft_id' => $draft->id
+        ]);
+
+        $draft->anchoredVersion()->associate($draftVersion);
+        $draft->save();
+
         //pass all $request to the back page
-        return back()->with('success', $request->all());
+        return redirect()->to(route('draft.show', $draft->id));
     }
 
     /**

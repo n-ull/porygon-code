@@ -4,5 +4,8 @@
     @endif
     <x-page-box>
         <div>{{ $draft->title }}</div>
+
+        @markdown($draft->anchoredVersion->content)
+
     </x-page-box>
 </x-app-layout>

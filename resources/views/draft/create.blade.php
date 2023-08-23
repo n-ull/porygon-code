@@ -17,6 +17,7 @@
     <div>
         <x-page-box>
             <div class="block bg-white p-8 rounded-md">
+                <x-validation-errors class="mb-4"></x-validation-errors>
                 <form action="{{ route('draft.store') }}" method="POST">
                     @csrf
                     <h2 class="text-xl font-bold">Basic Info</h2>
@@ -56,9 +57,9 @@
                     <input name="v_title" type="text"
                         class="w-full border border-gray-300 rounded-md p-2 placeholder:text-gray-300 mb-2"
                         placeholder="First Post">
-                    <textarea name="v_content" id="editor" class="mb-4"></textarea>
+                    <textarea name="v_content" id="editor"></textarea>
 
-                    <div class="flex w-full justify-end">
+                    <div class="flex w-full justify-end mt-4">
                         <button type="submit"
                             class="p-2.5 rounded-md bg-primary hover:bg-primary/70 transition-all text-white">Publish</button>
                     </div>

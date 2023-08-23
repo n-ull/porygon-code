@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Draft extends Model
 {
@@ -18,19 +19,36 @@ class Draft extends Model
         'category_id',
         'user_id',
         'tags',
-        'images'
+        'images',
+        'anchor_version_id'
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function category(): BelongsTo {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function versions(): HasMany {
+    public function versions(): HasMany
+    {
         return $this->hasMany(DraftVersion::class);
     }
 
+    public function anchoredVersion()
+    {
+        return $this->hasOne(DraftVersion::class, 'anchor_version_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($draft) {
+            $draft->versions()->delete(); // Borra automáticamente las versiones relacionadas
+        });
+    }
 }

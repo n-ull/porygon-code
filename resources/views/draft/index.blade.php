@@ -11,7 +11,7 @@
                 @if (count($drafts) != 5)
                     <a href="{{route('draft.create')}}">
                         <div
-                            class="flex flex-col border-4 border-dashed rounded-md items-center justify-center min-h-[400px] cursor-pointer hover:bg-gray-200/20 transition-colors">
+                            class="flex flex-col border-4 border-dashed rounded-md items-center justify-center h-full min-h-[460px] scale-95 cursor-pointer hover:bg-gray-200/20 transition-colors">
                             <x-heroicon-o-plus-circle class="text-center rounded-full w-20 h-20 text-gray-200" />
                         </div>
                     </a>

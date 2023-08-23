@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->timestamps();
 
             if(Schema::hasTable('drafts')){
                 $table->foreignId('draft_id')->constrained('drafts')->cascadeOnDelete();
             }
+
+            $table->timestamps();
         });
     }
 
