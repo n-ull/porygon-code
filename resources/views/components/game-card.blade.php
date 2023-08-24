@@ -14,7 +14,7 @@
     @if ($can_edit)
         <div class="relative">
             <div class="absolute right-0 top-0 m-4 z-10 cursor-pointer">
-                <x-heroicon-s-pencil-square class="text-white shadow-lg hover:text-gray-200 transition" />
+                <x-heroicon-s-pencil-square class="text-white drop-shadow-lg hover:text-gray-200 transition" />
             </div>
         </div>
     @endif

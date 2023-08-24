@@ -170,8 +170,5 @@
                 </div>
             </div>
         @endauth
-        @guest
-            holi
-        @endguest
     </div>
 </nav>

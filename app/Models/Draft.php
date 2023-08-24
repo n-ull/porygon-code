@@ -38,9 +38,8 @@ class Draft extends Model
         return $this->hasMany(DraftVersion::class);
     }
 
-    public function anchoredVersion()
-    {
-        return $this->hasOne(DraftVersion::class, 'anchor_version_id');
+    public function anchored_version(): HasOne {
+        return $this->hasOne(DraftVersion::class, 'id', 'anchor_version_id');
     }
 
     protected static function boot()

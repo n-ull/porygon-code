@@ -55,7 +55,7 @@ class DraftController extends Controller
             'draft_id' => $draft->id
         ]);
 
-        $draft->anchoredVersion()->associate($draftVersion);
+        $draft->anchored_version = $draftVersion->id;
         $draft->save();
 
         //pass all $request to the back page
